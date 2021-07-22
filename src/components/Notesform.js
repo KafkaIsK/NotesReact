@@ -8,12 +8,23 @@ export class Notesform extends Component {
             title: '',
             note: ''
         }
+
+        this.createNote = this.createNote.bind(this);
     }
 
     onChangeHandler (evt, key) {
         this.setState({
             [key]: evt.target.value
         });
+    }
+
+    createNote () {
+        if (this.state.title !== '' && this.state.note !== '') {
+            firebase.database().ref('notes').push({
+                title: this.state.title,
+                note: this.state.note
+            })
+        }
     }
 
     render() {
@@ -39,7 +50,7 @@ export class Notesform extends Component {
                         onChange={(evt) => this.onChangeHandler(evt, 'note')}
                     ></textarea>
                 </div>
-                <button>Create Note</button>
+                <button onClick={this.createNote}>Create Note</button>
             </section>
         )
     }
