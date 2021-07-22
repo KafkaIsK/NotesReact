@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDy9v6AW0ByBATcjcL1H_f0mSKjXE2LMk8",
@@ -23,5 +22,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-reportWebVitals();

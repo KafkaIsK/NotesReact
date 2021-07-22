@@ -52,6 +52,10 @@ main {
   margin-bottom: 15px;
 }
 
+.noteform button {
+  cursor: pointer;
+}
+
 .notes {
   display: grid;
   grid-template-columns: 1fr;
@@ -81,6 +85,7 @@ main {
   color: #FF0000;
   font-size: 24px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .notes .note .note-content {

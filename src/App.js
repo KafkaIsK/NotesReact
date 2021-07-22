@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import firebase from "firebase";
+import firebase from "firebase/app";
 import Header from "./components/Header";
 import Notesform from "./components/Notesform";
 import Notes from "./components/Notes";
@@ -34,6 +34,15 @@ class App extends Component {
         notes: notes
       });
     });
+
+    this.db.ref('notes').on('child_removed', snapshot => {
+      let notes = this.state.notes;
+      notes = notes.filter(note => note.id !== snapshot.key);
+
+      this.setState({
+        notes: notes
+      });
+    });
   }
 
   render() {
@@ -42,7 +51,7 @@ class App extends Component {
         <Header />
         <main>
           <Notesform />
-          <Notes notes={this.state} />
+          <Notes notes={this.state.notes} />
         </main>
       </div>
     );
